@@ -7,7 +7,7 @@ DefaultEncoding=UTF-8
 
 [General]
 Command=/bin/zsh
-Name=Profile #1
+Name=profile
 Parent=FALLBACK/
 
 [Interaction Options]
