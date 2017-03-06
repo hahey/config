@@ -1,5 +1,9 @@
 #!/bin/bash
 
-ln -s vim ~/.vim
-ln -s profile ~/.local/share/konsole/profile
+VIM="/vim"
+
+rm -rf ~/.vim
+ln -s $PWD$VIM ~/.vim
+mkdir -p ~/.local/share/konsole
+ln -s profile ~/.local/share/konsole
 ./vim/pathogen-update.sh
