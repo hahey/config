@@ -13,4 +13,9 @@ if [ ! -f "$PATHOGEN" ]; then
 curl -LSso "$PATHOGEN" https://tpo.pe/pathogen.vim
 fi
 
-for i in ~/.vim/bundle/*; do git -C $i pull; done
+for i in ~/.vim/bundle/*
+   do
+      cd $i
+      git pull
+      cd -
+done
