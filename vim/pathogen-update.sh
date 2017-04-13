@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BUNDLE_DIR=bundle
-AUTOLOAD_DIR=autoload
-PATHOGEN=autoload/pathogen.vim
+BUNDLE_DIR="bundle"
+AUTOLOAD_DIR="autoload"
+PATHOGEN="autoload/pathogen.vim"
 if [ ! -d "$AUTOLOAD_DIR$" ]; then
     mkdir -p "$AUTOLOAD_DIR"
 fi
