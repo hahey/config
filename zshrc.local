@@ -1,0 +1,101 @@
+#### Git
+
+gic () {
+    LBUFFER="git commit -m \""
+    RBUFFER="\""
+}
+zle -N gic gic
+bindkey "git c" gic
+
+gis () {
+    LBUFFER="git status"
+}
+zle -N gis gis
+bindkey "git s" gis
+
+gap () {
+    LBUFFER="git add -p"
+}
+zle -N gap gap
+bindkey "git a" gap
+
+gicc () {
+    LBUFFER="git checkout"
+}
+zle -N gicc gicc
+bindkey "git co" gicc
+
+#### Python stuff
+
+function check_build_py(){
+    if ! [[ -f "$PWD/build.py" ]] ; then
+        echo "No 'build.py' found in current directory"
+        return 1
+    fi
+}
+
+function mkvenv2(){
+    if [ -n "${VIRTUAL_ENV}" ] ; then
+        echo "You already have a virtualenv active: $VIRTUAL_ENV"
+        return 1
+    fi
+    local venv_name
+    venv_name=${1:-.venv2}
+    if [ -e $venv_name ] ; then
+        echo "$venv_name already exists, aborting."
+        return 1
+    fi
+    echo "Will setup virtualenv in $venv_name"
+    virtualenv $venv_name
+    source $venv_name/bin/activate
+    pip install -U pip
+    if check_build_py ; then
+        pip install -U --pre pybuilder
+        pyb install_dependencies
+    fi
+}
+
+function mkvenv3(){
+    if [ -n "${VIRTUAL_ENV}" ] ; then
+        echo "You already have a virtualenv active: $VIRTUAL_ENV"
+        return 1
+    fi
+    local venv_name
+    venv_name=${1:-.venv3}
+    if [ -e $venv_name ] ; then
+        echo "$venv_name already exists, aborting."
+        return 1
+    fi
+    echo "Will setup virtualenv in $venv_name"
+    python3 -m venv $venv_name
+    source $venv_name/bin/activate
+    pip install -U pip
+    if check_build_py ; then
+        pip install -U --pre pip pybuilder
+        pyb install_dependencies
+    fi
+}
+
+alias venv2="source .venv2/bin/activate"
+alias venv3="source .venv3/bin/activate"
+
+
+#### Configure prompt
+export TERM="xterm-256color"
+source "$HOME/config/config/powerlevel9k/powerlevel9k.zsh-theme"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_intelligence time background_jobs)
+
+zsh_python_version () {
+    python -c 'import sys; print("py{}.{}".format(sys.version_info[0], sys.version_info[1]))'
+}
+
+zsh_intelligence () {
+    if [[ -n $VIRTUAL_ENV ]]; then
+        zsh_python_version;
+    else
+        echo "~"
+    fi
+}
+
+POWERLEVEL9K_CUSTOM_INTELLIGENCE='zsh_intelligence'
