@@ -27,6 +27,10 @@ bindkey "git co" gicc
 
 #### Python stuff
 
+function activate_conda(){
+    export PATH="/home/heuna/miniconda3/bin:$PATH"
+}
+
 function check_build_py(){
     if ! [[ -f "$PWD/build.py" ]] ; then
         echo "No 'build.py' found in current directory"
@@ -78,12 +82,12 @@ function mkvenv3(){
 
 alias venv2="source .venv2/bin/activate"
 alias venv3="source .venv3/bin/activate"
-
+alias cenv3="source activate cenv3"
 
 #### Configure prompt
 export TERM="xterm-256color"
 source "$HOME/config/config/powerlevel9k/powerlevel9k.zsh-theme"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv anaconda vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_intelligence time background_jobs)
 
 zsh_python_version () {
