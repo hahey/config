@@ -95,7 +95,7 @@ zsh_python_version () {
 }
 
 zsh_intelligence () {
-    if [[ -n $VIRTUAL_ENV ]]; then
+    if [[ (-n $VIRTUAL_ENV || -n $CONDA_PREFIX) ]]; then
         zsh_python_version;
     else
         echo "~"
