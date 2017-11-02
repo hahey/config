@@ -5,4 +5,5 @@ LICENCE
 *.txt
 *.markdown
 *.png
-
+vim
+powerlevel9k

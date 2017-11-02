@@ -72,13 +72,22 @@ let g:syntastic_python_checkers=['flake8']
 
 "setting airline
 set laststatus=2
-let g:airline#extensions#tabline#tab_nr_type=2 
+let g:airline#extensions#tabline#tab_nr_type=2
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline#extensions#tabline#switch_buffers_and_tabs=1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-set nocompatible
+"setting airline for fugitive
+set statusline+=%{GitInfo()}
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#vcs_priority = ["git", "mercurial"]
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#branch#format = 0
+
+
 set history=50
 set updatetime=2000
 set grepprg=grep\ -nsHE
