@@ -5,6 +5,7 @@ VIMRC="/vimrc"
 PROFILE="/profile"
 ZSHRC="/zshrc"
 ZSHLOC="/zshrc.local"
+CONKY="/conkyrc"
 
 rm -rf ~/.vim
 mkdir vim
@@ -13,6 +14,9 @@ git clone https://github.com/VundleVim/Vundle.vim.git
 mkdir -p ~/.vim/bundle
 ln -s $PWD$VUNDLE ~/.vim/bundle/Vundle.vim
 cd ..
+
+rm ~/.conkyrc
+ln -s $PWD$CONKY ~/.conkyrc
 
 rm ~/.vimrc
 ln -s $PWD$VIMRC ~/.vimrc
