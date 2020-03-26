@@ -19,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-obsession'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'sirver/ultisnips'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -87,6 +88,14 @@ let g:airline#extensions#branch#vcs_priority = ["git", "mercurial"]
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#branch#format = 0
 
+"setting ultisnips
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 set history=50
 set updatetime=2000
