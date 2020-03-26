@@ -28,7 +28,7 @@ filetype plugin indent on    " required
 set autoindent
 set smartindent
 
-set textwidth=70
+set textwidth=80
 set wrap
 set nowrapscan
 
