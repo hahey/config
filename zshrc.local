@@ -103,3 +103,8 @@ zsh_intelligence () {
 }
 
 POWERLEVEL9K_CUSTOM_INTELLIGENCE='zsh_intelligence'
+
+# keyboard disable
+function disable_keyboard(){
+   xinput list|grep AT| sed -n 's/.*id=\([0-9]\+\).*/\1/p' | xargs xinput disable
+}
