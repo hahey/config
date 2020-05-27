@@ -19,11 +19,11 @@ fonts-nanum-extra
 fonts-noto
 fonts-noto-cjk
 
-autokey-qt
+autokey-gtk
 compizconfig-settings-manager
 compiz
 compiz-plugins-extra
-firefox
+firefox-esr
 
 flameshot
 wine
