@@ -33,3 +33,12 @@ mkdir -p ~/.local/share/konsole
 ln -s $PWD$PROFILE ~/.local/share/konsole/profile
 
 
+read -p "Debian package install?" -n 1 -r
+
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    wget -O ./boostnote.deb "https://github.com/BoostIO/BoostNote.next/releases/latest/download/boost-note-linux.deb"
+    wget -O ./dropbox.deb "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+    sed 's/# .*//' apt.list| xargs apt install -y
+fi
