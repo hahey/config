@@ -1,0 +1,9 @@
+numpy
+scipy
+pandas
+scikit-learn
+datetime
+flake8
+tqdm
+jupyter
+matplotlib

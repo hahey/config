@@ -116,3 +116,12 @@ function netspeed(){
     speedtest-cli
     deactivate
 }
+
+function make_ml_playground(){
+    cd "$(mktemp -d)"
+    mkvenv3
+    pip install -r "$CONFIG/ml_requirements.list"
+}
+
+alias mkplay='make_ml_playground'
+alias gotemp='cd "$(mktemp -d)"'
