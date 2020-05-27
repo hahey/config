@@ -31,6 +31,9 @@ okular
 akregator
 gimp
 blender
+
+build-essential
+cmake
 neovim-qt
 
 tex-common

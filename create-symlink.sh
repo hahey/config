@@ -45,4 +45,6 @@ fi
 
 mkvenv3
 pip install speedtest-cli
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py --all
 deactivate
