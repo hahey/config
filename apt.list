@@ -22,6 +22,7 @@ fonts-noto-cjk
 autokey-qt
 compizconfig-settings-manager
 compiz
+compiz-plugins-extra
 firefox
 
 flameshot
