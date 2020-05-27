@@ -86,7 +86,9 @@ alias cenv3="source activate cenv3"
 
 #### Configure prompt
 export TERM="xterm-256color"
-source "$HOME/config/config/powerlevel9k/powerlevel9k.zsh-theme"
+
+export CONFIG="$HOME/config/"
+source "$CONFIG/powerlevel9k/powerlevel9k.zsh-theme"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv anaconda vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_intelligence time background_jobs)
 
@@ -110,7 +112,7 @@ function disable_keyboard(){
 }
 
 function netspeed(){
-    source $HOME/config/config/.venv3/bin/activate
+    source $CONFIG/.venv3/bin/activate
     speedtest-cli
     deactivate
 }
