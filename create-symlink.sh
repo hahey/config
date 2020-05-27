@@ -42,3 +42,7 @@ then
     wget -O ./dropbox.deb "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
     sed 's/# .*//' apt.list| xargs apt install -y
 fi
+
+mkvenv3
+pip install speedtest-cli
+deactivate

@@ -108,3 +108,9 @@ POWERLEVEL9K_CUSTOM_INTELLIGENCE='zsh_intelligence'
 function disable_keyboard(){
    xinput list|grep AT| sed -n 's/.*id=\([0-9]\+\).*/\1/p' | xargs xinput disable
 }
+
+function netspeed(){
+    source $HOME/config/config/.venv3/bin/activate
+    speedtest-cli
+    deactivate
+}
