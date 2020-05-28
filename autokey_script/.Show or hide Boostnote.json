@@ -1,8 +1,8 @@
 {
-    "usageCount": 2, 
+    "usageCount": 4, 
     "omitTrigger": false, 
     "prompt": false, 
-    "description": "activate_firefox", 
+    "description": "Show or hide Boostnote", 
     "abbreviation": {
         "wordChars": "[\\w]", 
         "abbreviations": [], 
@@ -12,8 +12,9 @@
         "triggerInside": false
     }, 
     "hotkey": {
-        "hotKey": "<f11>", 
+        "hotKey": "b", 
         "modifiers": [
+            "<ctrl>", 
             "<super>"
         ]
     }, 
