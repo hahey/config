@@ -3,6 +3,7 @@
 set -eu
 
 read -p "Dropbox, Boostnote, Chrome download?" -n 1 YES
+echo
 if [[ $YES =~ ^[Yy]$ ]]
 then
     wget -O ./boostnote.deb "https://github.com/BoostIO/BoostNote.next/releases/latest/download/boost-note-linux.deb"
