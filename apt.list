@@ -35,6 +35,7 @@ blender
 build-essential
 cmake
 neovim-qt
+golang-go
 
 tex-common
 texlive

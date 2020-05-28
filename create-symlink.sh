@@ -2,14 +2,18 @@
 
 set -eu
 
-read -p "Debian package install?" -n 1 YES
-
-echo
+read -p "Dropbox and Boostnote download?" -n 1 YES
 if [[ $YES =~ ^[Yy]$ ]]
 then
     wget -O ./boostnote.deb "https://github.com/BoostIO/BoostNote.next/releases/latest/download/boost-note-linux.deb"
     wget -O ./dropbox.deb "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
-    sed 's/# .*//' apt.list| xargs sudo apt install -y
+fi
+
+read -p "Debian package install?" -n 1 YES
+echo
+if [[ $YES =~ ^[Yy]$ ]]
+then
+    sed 's/# .*//' apt.list| xargs sudo apt install -y --allow-downgrades
 fi
 
 read -p "Config setup?" -n 1 YES
@@ -53,9 +57,22 @@ mkdir -p ~/.local/share/konsole
 rm ~/.local/share/konsole/profile
 ln -s $PWD$PROFILE ~/.local/share/konsole/profile
 
-exec zsh
-mkvenv3
-pip install speedtest-cli
-cd ~/.vim/bundle/YouCompleteMe
-python3 install.py --all
-deactivate
+#temporal patch for go
+temporal_patch() {
+    # wget -O go.tar.gz https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
+    # tar -xvf go.tar.gz -C $HOME/go
+    GO114MODULE=on GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" go get golang.org/x/tools/gopls@latest
+}
+
+read -p "YouCompleteMe install?" -n 1 YES
+echo
+if [[ $YES =~ ^[Yy]$ ]]
+then
+    temporal_patch
+
+    CONF=$PWD
+    cd ~/.vim/bundle/YouCompleteMe
+    source $CONF$SPEED/bin/activate
+    GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" python3 install.py --go-completer --clangd-completer
+    cd $CONF
+fi
