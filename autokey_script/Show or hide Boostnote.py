@@ -68,11 +68,11 @@ def toggle_window(window_id, app_name):
 
 def start_application(app_name, command_basename):
     anounce_about_to('Starting', app_name)
-    with_enriched_exeptions(subprocess.call, [command_basename])
+    with_enriched_exeptions(subprocess.call, [command_basename.split()[0]])
 
 
 def toggle_application(app_name, command_basename, window_name_pattern):
-    if does_process_exist(command_basename):
+    if does_process_exist(command_basename.split()[0]):
         window_id = get_window_id(window_name_pattern)
         toggle_window(window_id, app_name)
     else:
@@ -80,6 +80,6 @@ def toggle_application(app_name, command_basename, window_name_pattern):
 
 
 try:
-    toggle_application('Boost Note', 'boostnote', 'Boost Note')
+    toggle_application('Boost Note', 'boostnote.next --no-sandbox', 'Boost Note')
 except Exception as e:
     announce('ERROR: {}'.format(e))
