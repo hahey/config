@@ -69,6 +69,16 @@ mkdir -p ~/.local/share/konsole
 rm ~/.local/share/konsole/profile
 ln -s $PWD$PROFILE ~/.local/share/konsole/profile
 
+read -p "netspeed (speedtest-cli) install?" -n 1 YES
+echo
+if [[ $YES =~ ^[Yy]$ ]]
+then
+    [[ -e $PWD$SPEED ]] || python3 -m venv $PWD$SPEED
+    source $PWD$SPEED/bin/activate
+    pip install -U pip speedtest-cli
+fi
+
+
 #temporal patch for go
 temporal_patch() {
     # wget -O go.tar.gz https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz

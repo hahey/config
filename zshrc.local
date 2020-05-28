@@ -112,7 +112,7 @@ function disable_keyboard(){
 }
 
 function netspeed(){
-    source $CONFIG/.venv3/bin/activate
+    source $CONFIG/.netspeed/bin/activate
     speedtest-cli
     deactivate
 }
