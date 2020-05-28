@@ -19,9 +19,8 @@ then
 fi
 
 read -p "Config setup?" -n 1 YES
-
 echo
-if [[ $YES = ^[Yy]$ ]]
+if ! [[ $YES =~ ^[Yy]$ ]]
 then
     exit 0
 fi
