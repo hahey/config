@@ -32,6 +32,7 @@ okular
 akregator
 gimp
 blender
+chromium
 
 build-essential
 cmake
@@ -46,3 +47,4 @@ conky-all
 
 ./dropbox.deb
 ./boostnote.deb
+./chrome.deb

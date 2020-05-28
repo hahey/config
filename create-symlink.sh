@@ -2,11 +2,12 @@
 
 set -eu
 
-read -p "Dropbox and Boostnote download?" -n 1 YES
+read -p "Dropbox, Boostnote, Chrome download?" -n 1 YES
 if [[ $YES =~ ^[Yy]$ ]]
 then
     wget -O ./boostnote.deb "https://github.com/BoostIO/BoostNote.next/releases/latest/download/boost-note-linux.deb"
     wget -O ./dropbox.deb "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+    wget -O ./chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 fi
 
 read -p "Debian package install?" -n 1 YES
@@ -81,8 +82,8 @@ fi
 
 #temporal patch for go
 temporal_patch() {
-    # wget -O go.tar.gz https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
-    # tar -xvf go.tar.gz -C $HOME/go
+    wget -O go.tar.gz https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
+    tar -xvf go.tar.gz -C $HOME/go
     GO114MODULE=on GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" go get golang.org/x/tools/gopls@latest
 }
 
