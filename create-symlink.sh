@@ -24,19 +24,25 @@ then
     exit 0
 fi
 
+echo configuring
 VUNDLE="/Vundle.vim"
 VIMRC="/vimrc"
+NVIMCONF="/init.vim"
 PROFILE="/profile"
 ZSHRC="/zshrc"
 ZSHLOC="/zshrc.local"
 CONKY="/conkyrc"
+SPEED="/.netspeed"
 
-rm -rf ~/.vim
+mkdir -p ~/.config/nvim
+rm -r ~/.config/nvim/init.vim
+ln -s $PWD$NVIMCONF ~/.config/nvim/init.vim
+
 mkdir -p vim
 cd vim
 [[ -d Vundle.vim ]] || git clone https://github.com/VundleVim/Vundle.vim.git
 mkdir -p ~/.vim/bundle
-ln -s $PWD$VUNDLE ~/.vim/bundle/Vundle.vim
+[[ -e ~/.vim/bundle/Vundle.vim ]] || ln -s $PWD$VUNDLE ~/.vim/bundle/Vundle.vim
 cd ..
 
 rm ~/.conkyrc
@@ -44,7 +50,13 @@ ln -s $PWD$CONKY ~/.conkyrc
 
 rm ~/.vimrc
 ln -s $PWD$VIMRC ~/.vimrc
-vim +PluginInstall +qall
+
+read -p "Vim Plugin install?" -n 1 YES
+echo
+if [[ $YES =~ ^[Yy]$ ]]
+then
+    vim +PluginInstall +qall
+fi
 
 [[ -d powerlevel9k ]] || git clone https://github.com/bhilburn/powerlevel9k.git
 
