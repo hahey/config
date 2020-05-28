@@ -7,3 +7,9 @@ LICENCE
 *.png
 vim
 powerlevel9k
+.netspeed/
+boostnote.deb
+dropbox.deb
+go.mod
+go.sum
+go.tar.gz
