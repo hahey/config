@@ -21,6 +21,7 @@ fonts-noto
 fonts-noto-cjk
 
 autokey-gtk
+xdotool
 compizconfig-settings-manager
 compiz
 compiz-plugins-extra
