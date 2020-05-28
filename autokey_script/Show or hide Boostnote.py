@@ -2,6 +2,7 @@
 # make Boostnote hide and show like Yakuake
 #
 # Copyright (C) 2020 Sebastian Pipping <sebastian@pipping.org>
+# Copyright (C) 2020 Heuna Kim
 # Licensed under GPL v3 or later
 #
 # Version 2020-03-21 01:21 UTC+1
@@ -66,20 +67,23 @@ def toggle_window(window_id, app_name):
             ['xdotool', xdotool_action, '--sync', str(window_id)])
 
 
-def start_application(app_name, command_basename):
+def start_application(app_name, command):
     anounce_about_to('Starting', app_name)
-    with_enriched_exeptions(subprocess.call, [command_basename.split()[0]])
+    with_enriched_exeptions(subprocess.call, command)
 
 
-def toggle_application(app_name, command_basename, window_name_pattern):
-    if does_process_exist(command_basename.split()[0]):
+def toggle_application(app_name, window_name_pattern,
+                       command_basename, command_args):
+    if does_process_exist(command_basename):
         window_id = get_window_id(window_name_pattern)
         toggle_window(window_id, app_name)
     else:
-        start_application(app_name, command_basename)
+        command = [command_basename] + command_args
+        start_application(app_name, command)
 
 
 try:
-    toggle_application('Boost Note', 'boostnote.next --no-sandbox', 'Boost Note')
+    toggle_application('Boost Note', 'Boost Note',
+                       'boostnote.next', ['--no-sandbox'])
 except Exception as e:
     announce('ERROR: {}'.format(e))
