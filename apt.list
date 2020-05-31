@@ -1,17 +1,19 @@
+# shell related
 zsh
 yakuake
 htop
+tree
 
+# git related
 git
 qgit
 tig
-
-tree
 
 # python-related excluding opencv: see the repo install-script
 python3-dev
 python3-venv
 flake8
+python-gpg
 
 # korean
 ibus-hangul
@@ -20,31 +22,37 @@ fonts-nanum-extra
 fonts-noto
 fonts-noto-cjk
 
+# autokey related
 autokey-gtk
 xdotool
+xinput
+
+# browsers
+firefox-esr
+chromium
+
+# improve ui setting
+conky-all
 compizconfig-settings-manager
 compiz
 compiz-plugins-extra
-firefox-esr
 
-flameshot
-wine
-okular
-akregator
-gimp
-blender
-chromium
-
+# neovim
 build-essential
 cmake
 neovim-qt
 golang-go
 
+# other application
 tex-common
 texlive
 pdftk
+flameshot
+wine
+okular
+akregator
 blender
-conky-all
+gimp
 
 ./dropbox.deb
 ./boostnote.deb
