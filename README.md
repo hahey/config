@@ -14,7 +14,7 @@ $ ./create-symlink.sh
    - `ibus-setup`
        - input method -> add Korean - Hangul
        - keyboard shortcuts -> next input method
-* Browser Cookie Exception, Cookie auto clean
+* browser cookie exception, cookie auto clean
    - airtable, pocket, boostnote, dropbox login
 * startup applications
    - yakuake, autokey
