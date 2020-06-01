@@ -99,3 +99,12 @@ then
     GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" python3 install.py --go-completer --clangd-completer
     cd $CONF
 fi
+
+read -p "texlive package install?" -n 1 YES
+echo
+if [[ $YES =~ ^[Yy]$ ]]
+then
+    tlmgr init-usertree
+    tlmgr update --self
+    tlmgr install german geometry
+fi
