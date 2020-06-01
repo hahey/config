@@ -6,10 +6,9 @@ LICENCE
 *.markdown
 *.png
 vim
-powerlevel9k
+powerlevel9k/
 .netspeed/
-boostnote.deb
-dropbox.deb
+/*.deb
 go.mod
 go.sum
 go.tar.gz
