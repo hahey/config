@@ -12,8 +12,10 @@ $ ./create-symlink.sh
 ### configuration afterwards
 * Korean, German setting
    - `ibus-setup`
-       - input method -> add Korean - Hangul
-       - keyboard shortcuts -> next input method
+       - `Input Method` -> add `Korean - Hangul`
+       - `Keyboard Shortcuts` -> `Next input method`
+   - `Keyboard settings`
+       - `Layout` -> `Change layout option`, add `Keyboard layout`
 * browser cookie exception, cookie auto clean
    - airtable, pocket, boostnote, dropbox login
 * startup applications
