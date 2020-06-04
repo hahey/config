@@ -41,7 +41,7 @@ compiz-plugins-extra
 build-essential
 cmake
 neovim-qt
-golang-go
+# golang-go
 
 # other application
 tex-common

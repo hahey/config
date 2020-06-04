@@ -47,20 +47,11 @@ netspeed_install(){
     pip install -U pip speedtest-cli
 }
 
-#temporal patch for go
-temporal_patch() {
-    wget -O go.tar.gz https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz
-    tar -xvf go.tar.gz -C $HOME/go
-    GO114MODULE=on GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" go get golang.org/x/tools/gopls@latest
-}
-
 youcompleteme_install(){
-        temporal_patch
-
         CONF=$PWD
         cd ~/.vim/bundle/YouCompleteMe
         source $CONF$SPEED/bin/activate
-        GOROOT="$HOME/go/go" PATH="${GOROOT}/bin:${PATH}" python3 install.py --go-completer --clangd-completer
+        python3 install.py --clangd-completer
         cd $CONF
 }
 
