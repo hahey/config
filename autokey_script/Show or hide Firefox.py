@@ -79,6 +79,6 @@ def toggle_application(app_name, command_basename, window_name_pattern):
 
 
 try:
-    toggle_application('Firefox', 'firefox', 'Mozilla Firefox')
+    toggle_application('Firefox', 'firefox-esr', 'Mozilla Firefox')
 except Exception as e:
     announce('ERROR: {}'.format(e))
