@@ -50,8 +50,10 @@ youcompleteme_install(){
 }
 
 texlive_packages_install(){
-    tlmgr init-usertree
-    tlmgr update --self
+    [[ -d "$HOME/texmf" ]] || tlmgr init-usertree
+    [[ -e "$PWD/update-tlmgr-latest.sh" ]] || wget https://mirror.informatik.hs-fulda.de/tex-archive/systems/texlive/tlnet/update-tlmgr-latest.sh
+    chmod u+x update-tlmgr-latest.sh
+    PATH="$PATH:$HOME/texmf" ./update-tlmgr-latest.sh
     tlmgr install german geometry
 }
 
