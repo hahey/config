@@ -8,14 +8,33 @@ ask_continue(){
     [[ -z $YES || $YES =~ ^[Yy]$ ]]
 }
 
-deb_download(){
+boostio_download(){
     wget -O ./boostnote.deb "https://github.com/BoostIO/BoostNote.next/releases/latest/download/boost-note-linux.deb"
+}
+
+dropbox_download(){
     wget -O ./dropbox.deb "https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb"
+}
+
+chrome_download(){
     wget -O ./chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
-if ask_continue "Dropbox, Boostnote, Chrome download"
+
+musescore_download(){
+    wget "https://musescore.org/de/download/musescore-x86_64.AppImage"
+}
+
+declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download ["Musescore"]=musescore_download)
+
+if ask_continue "Dropbox, Boostnote, Chrome, Musescore download"
 then
-    deb_download
+    for app in "${!apps[@]}"
+    do
+        if ask_continue $app
+        then
+            ${apps[$app]}
+        fi
+    done
 fi
 
 package_install(){
