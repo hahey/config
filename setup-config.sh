@@ -20,9 +20,14 @@ chrome_download(){
     wget -O ./chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
-declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download )
+transcribe_download(){
+    wget "https://www.seventhstring.com/xscribe/xsc64setup.tar.gz"
+    tar -xf xsc64setup.tar.gz
+}
 
-if ask_continue "Dropbox, Boostnote, Chrome download"
+declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download ["Transcribe"]=transcribe_download)
+
+if ask_continue "Dropbox, Boostnote, Chrome, Transcribe download"
 then
     for app in "${!apps[@]}"
     do
