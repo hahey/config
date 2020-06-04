@@ -120,7 +120,7 @@ function netspeed(){
 function make_ml_playground(){
     cd "$(mktemp -d)"
     mkvenv3
-    pip install -r "$CONFIG/ml_requirements.list"
+    pip install -r "$CONFIG"/ml_requirements.list
 }
 
 alias mkplay='make_ml_playground'

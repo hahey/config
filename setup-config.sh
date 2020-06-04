@@ -20,13 +20,9 @@ chrome_download(){
     wget -O ./chrome.deb "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 }
 
-musescore_download(){
-    wget "https://musescore.org/de/download/musescore-x86_64.AppImage"
-}
+declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download )
 
-declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download ["Musescore"]=musescore_download)
-
-if ask_continue "Dropbox, Boostnote, Chrome, Musescore download"
+if ask_continue "Dropbox, Boostnote, Chrome download"
 then
     for app in "${!apps[@]}"
     do
