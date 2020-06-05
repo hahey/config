@@ -39,6 +39,7 @@ then
 fi
 
 package_install(){
+    sudo apt update && sudo apt upgrade
     sed 's/# .*//' apt.list| xargs sudo apt install -y
 }
 if ask_continue "Debian package install"
@@ -81,7 +82,10 @@ config_setup_from_repo(){
     SPEED="/.netspeed"
 
     mkdir -p ~/.config/nvim
-    rm -r ~/.config/nvim/init.vim
+    if [[ -e ~/.config/nvim/init.vim ]]
+    then
+        rm -r ~/.config/nvim/init.vim
+    fi
     ln -s $PWD$NVIMCONF ~/.config/nvim/init.vim
 
     mkdir -p vim
