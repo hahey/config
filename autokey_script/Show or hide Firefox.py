@@ -1,10 +1,13 @@
-# Python 2.7 script for autokey-gtk 0.90.4 to ..
-# make Mozilla Firefox (firefox-esr) hide and show like Yakuake
+# Python 3.6 script for autokey-gtk 0.95.10 to ..
+# make Firefox hide and show like Yakuake
 #
 # Copyright (C) 2020 Sebastian Pipping <sebastian@pipping.org>
+# Copyright (C) 2020 Heuna Kim
 # Licensed under GPL v3 or later
-#
 # Version 2020-03-21 01:21 UTC+1
+#
+# modified for python 3 script by Heuna Kim
+# Version 2020-06-06
 
 import errno
 import os
@@ -36,7 +39,8 @@ def get_window_id(window_name_pattern):
             subprocess.check_output,
             ['xdotool', 'search', '--name',
              window_name_pattern]).strip()
-    return int(output.split('\n')[-1])
+
+    return int(output.decode().split('\n')[-1])
 
 
 def get_active_window_id():
@@ -60,25 +64,29 @@ def toggle_window(window_id, app_name):
         xdotool_action, gerund = 'windowactivate', 'Activating'
 
     anounce_about_to(gerund, app_name)
+
     with_enriched_exeptions(
             subprocess.call,
             ['xdotool', xdotool_action, '--sync', str(window_id)])
 
 
-def start_application(app_name, command_basename):
+def start_application(app_name, command):
     anounce_about_to('Starting', app_name)
-    with_enriched_exeptions(subprocess.call, [command_basename])
+    with_enriched_exeptions(subprocess.call, command)
 
 
-def toggle_application(app_name, command_basename, window_name_pattern):
+def toggle_application(app_name, window_name_pattern,
+                       command_basename, command_args):
     if does_process_exist(command_basename):
         window_id = get_window_id(window_name_pattern)
         toggle_window(window_id, app_name)
     else:
-        start_application(app_name, command_basename)
+        command = [command_basename] + command_args
+        start_application(app_name, command)
 
 
 try:
-    toggle_application('Firefox', 'firefox-esr', 'Mozilla Firefox')
+    toggle_application('Firefox', 'Mozilla Firefox',
+                       'firefox-esr', [])
 except Exception as e:
     announce('ERROR: {}'.format(e))

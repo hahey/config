@@ -1,4 +1,4 @@
-# Python 2.7 script for autokey-gtk 0.90.4 to ..
+# Python 3.6 script for autokey-gtk 0.95.10 to ..
 # make Boostnote hide and show like Yakuake
 #
 # Copyright (C) 2020 Sebastian Pipping <sebastian@pipping.org>
@@ -6,7 +6,9 @@
 # Licensed under GPL v3 or later
 #
 # Version 2020-03-21 01:21 UTC+1
-# modified for Boostnote from Firefox by Heuna Kim
+# modified
+# - for Boostnote from Firefox
+# - for python3 adaptation for debian bullseye by Heuna Kim
 
 import errno
 import os
@@ -38,7 +40,7 @@ def get_window_id(window_name_pattern):
             subprocess.check_output,
             ['xdotool', 'search', '--name',
              window_name_pattern]).strip()
-    return int(output.split('\n')[-1])
+    return int(output.decode().split('\n')[-1])
 
 
 def get_active_window_id():
