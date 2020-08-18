@@ -78,7 +78,7 @@ config_setup_from_repo(){
     PROFILE="/profile"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
-    CONKY="/conky.conf"
+    CONKY="/conkyrc"
     SPEED="/.netspeed"
 
     mkdir -p ~/.config/nvim
@@ -96,7 +96,8 @@ config_setup_from_repo(){
     cd ..
 
     rm ~/.conkyrc
-    ln -s $PWD$CONKY ~/.conkyrc
+    mkdir -p ~/.config/conky
+    [[ -e ~/.config/conky/conky.conf ]] || ln -s $PWD$CONKY ~/.config/conky/conky.conf
 
     rm ~/.vimrc
     ln -s $PWD$VIMRC ~/.vimrc
