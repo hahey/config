@@ -78,7 +78,7 @@ config_setup_from_repo(){
     PROFILE="/profile"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
-    CONKY="/conkyrc"
+    CONKY="/conky.conf"
     SPEED="/.netspeed"
 
     mkdir -p ~/.config/nvim
