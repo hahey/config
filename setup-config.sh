@@ -25,9 +25,13 @@ transcribe_download(){
     tar -xf xsc64setup.tar.gz
 }
 
-declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download ["Transcribe"]=transcribe_download)
+conky_download(){
+    wget "https://github.com/brndnmtthws/conky/releases/download/v1.11.5/conky-x86_64.AppImage"
+}
 
-if ask_continue "Dropbox, Boostnote, Chrome, Transcribe download"
+declare -A apps=( ["Boostio"]=boostio_download ["Dropbox"]=dropbox_download ["Chrome"]=chrome_download ["Transcribe"]=transcribe_download ["Conky"]=conky_download)
+
+if ask_continue "Dropbox, Boostnote, Chrome, Transcribe, Conky download"
 then
     for app in "${!apps[@]}"
     do

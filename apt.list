@@ -32,7 +32,7 @@ firefox-esr
 chromium
 
 # improve ui setting
-conky-all
+# conky-all
 compizconfig-settings-manager
 compiz
 compiz-plugins-extra
