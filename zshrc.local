@@ -84,6 +84,10 @@ alias venv2="source .venv2/bin/activate"
 alias venv3="source .venv3/bin/activate"
 alias cenv3="source activate cenv3"
 
+#### adding path
+export PATH=$PATH:$HOME/.local/bin
+
+
 #### Configure prompt
 export TERM="xterm-256color"
 
@@ -125,3 +129,7 @@ function make_ml_playground(){
 
 alias mkplay='make_ml_playground'
 alias gotemp='cd "$(mktemp -d)"'
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
