@@ -19,7 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-obsession'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'sirver/ultisnips'
+"Plugin 'sirver/ultisnips'
 Plugin 'junegunn/fzf'
 
 call vundle#end()            " required
