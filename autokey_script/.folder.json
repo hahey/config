@@ -1,23 +1,23 @@
 {
-    "usageCount": 0, 
+    "type": "folder",
+    "title": "autokey_script",
+    "modes": [],
+    "usageCount": 0,
+    "showInTrayMenu": false,
     "abbreviation": {
-        "wordChars": "[\\w]", 
-        "abbreviations": [], 
-        "immediate": false, 
-        "ignoreCase": false, 
-        "backspace": true, 
-        "triggerInside": false
-    }, 
-    "modes": [], 
-    "title": "autokey_script", 
+        "abbreviations": [],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
     "hotkey": {
-        "hotKey": null, 
-        "modifiers": []
-    }, 
+        "modifiers": [],
+        "hotKey": null
+    },
     "filter": {
-        "regex": null, 
+        "regex": null,
         "isRecursive": false
-    }, 
-    "type": "folder", 
-    "showInTrayMenu": false
+    }
 }
