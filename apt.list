@@ -43,17 +43,20 @@ cmake
 neovim-qt
 # golang-go
 
-# other application
+# pdf and tex
 tex-common
 texlive
+texlive-extra-utils
 pdftk
+ipe
+okular
+
+# other application
 flameshot
 wine
-okular
 akregator
 blender
 gimp
-ipe
 musescore3
 musescore-general-soundfont
 
