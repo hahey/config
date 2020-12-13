@@ -1,9 +1,15 @@
 # shell related
-i3
 zsh
 yakuake
 htop
 tree
+fonts-font-awesome
+fonts-powerline
+
+# wm related
+i3
+polybar
+feh
 
 # git related
 git
@@ -42,7 +48,6 @@ compiz-plugins-extra
 build-essential
 cmake
 neovim-qt
-# golang-go
 
 # pdf and tex
 tex-common

@@ -5,6 +5,8 @@
 *.json
 vim
 powerlevel9k/
+polybar-themes/
+70-no-bitmaps-backup
 .netspeed/
 *.deb
 go.mod

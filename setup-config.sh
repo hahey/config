@@ -81,6 +81,7 @@ config_setup_from_repo(){
     NVIMCONF="/init.vim"
     PROFILE="/profile"
     I3WMCONF="/i3config"
+    POLYBAR_THEME="/polybar-themes/polybar-6"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
     CONKY="/conkyrc"
@@ -91,6 +92,21 @@ config_setup_from_repo(){
 
     mkdir -p ~/.config/i3
     [[ -e ~/.config/i3/config ]]  || ln -s $PWD$I3WMCONF ~/.config/i3/config
+
+    [[ -d polybar-themes ]] || git clone https://github.com/adi1090x/polybar-themes.git
+    mkdir -p ~/.local/share/fonts
+    cd $PWD$POLYBAR_THEME
+    cp -r fonts/* ~/.local/share/fonts
+    fc-cache -v
+    sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ../../70-no-bitmaps-backup
+    if [[ -d ~/.config/polybar ]]
+    then
+        rm -r ~/.config/polybar
+    fi
+    ln -s $PWD$POLYBAR_THEME ~/.config/polybar
+    ./scripts/type-switch.sh
+    ./scripts/color-switch.sh
+    cd ../..
 
     mkdir -p ~/.config/nvim
     if [[ -e ~/.config/nvim/init.vim ]]
