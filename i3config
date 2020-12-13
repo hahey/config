@@ -189,3 +189,4 @@ bindsym $mod+a mode "application"
 #}
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec setxkbmap -layout de,us -option grp:alt_space_toggle
