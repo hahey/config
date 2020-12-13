@@ -93,7 +93,7 @@ config_setup_from_repo(){
     mkdir -p ~/.config/i3
     [[ -e ~/.config/i3/config ]]  || ln -s $PWD$I3WMCONF ~/.config/i3/config
 
-    [[ -d polybar-themes ]] || git clone https://github.com/adi1090x/polybar-themes.git
+    [[ -d polybar-themes ]] || git clone ://github.com/hahey/polybar-themes.git
     mkdir -p ~/.local/share/fonts
     cd $PWD$POLYBAR_THEME
     cp -r fonts/* ~/.local/share/fonts
