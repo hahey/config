@@ -86,7 +86,6 @@ config_setup_from_repo(){
     CONKY="/conkyrc"
     SPEED="/.netspeed"
 
-    rm ~/.conkyrc
     mkdir -p ~/.config/conky
     [[ -e ~/.config/conky/conky.conf ]] || ln -s $PWD$CONKY ~/.config/conky/conky.conf
 
