@@ -21,6 +21,8 @@ Plugin 'tpope/vim-obsession'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'sirver/ultisnips'
 Plugin 'junegunn/fzf'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -29,7 +31,7 @@ filetype plugin indent on    " required
 set autoindent
 set smartindent
 
-set textwidth=80
+set textwidth=100
 set wrap
 set nowrapscan
 
@@ -91,9 +93,9 @@ let g:airline#extensions#branch#format = 0
 
 "setting ultisnips
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<M-e>"
+let g:UltiSnipsJumpForwardTrigger="<M-b>"
+let g:UltiSnipsJumpBackwardTrigger="<M-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -110,7 +112,7 @@ let maplocalleader = '\'
 "setting NERDTree
 autocmd VimEnter * NERDTree
 autocmd VimEnter * vertical resize -10
-nmap <Leader>nt :NERDTreeToggle
+nmap <f12> :NERDTreeToggle
 
 " Folding
 set foldmethod=marker
