@@ -9,6 +9,7 @@ fonts-powerline
 # wm related
 i3
 polybar
+rofi
 feh
 
 # git related
