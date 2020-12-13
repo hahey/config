@@ -80,10 +80,18 @@ config_setup_from_repo(){
     VIMRC="/vimrc"
     NVIMCONF="/init.vim"
     PROFILE="/profile"
+    I3WMCONF="/i3config"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
     CONKY="/conkyrc"
     SPEED="/.netspeed"
+
+    rm ~/.conkyrc
+    mkdir -p ~/.config/conky
+    [[ -e ~/.config/conky/conky.conf ]] || ln -s $PWD$CONKY ~/.config/conky/conky.conf
+
+    mkdir -p ~/.config/i3
+    [[ -e ~/.config/i3/config ]]  || ln -s $PWD$I3WMCONF ~/.config/i3/config
 
     mkdir -p ~/.config/nvim
     if [[ -e ~/.config/nvim/init.vim ]]
@@ -99,12 +107,8 @@ config_setup_from_repo(){
     [[ -e ~/.vim/bundle/Vundle.vim ]] || ln -s $PWD$VUNDLE ~/.vim/bundle/Vundle.vim
     cd ..
 
-    rm ~/.conkyrc
-    mkdir -p ~/.config/conky
-    [[ -e ~/.config/conky/conky.conf ]] || ln -s $PWD$CONKY ~/.config/conky/conky.conf
-
     rm ~/.vimrc
-    ln -s $PWD$VIMRC ~/.vimrc
+    ln -s $PWD$VIMRC ~/.vimrc 
 
     if ask_continue "Vim Plugin install?"
     then
