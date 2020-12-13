@@ -123,14 +123,14 @@ config_setup_from_repo(){
     cd ..
 
     rm ~/.vimrc
-    ln -s $PWD$VIMRC ~/.vimrc 
+    ln -s $PWD$VIMRC ~/.vimrc
 
     if ask_continue "Vim Plugin install?"
     then
         vim +PluginInstall +qall
     fi
 
-    [[ -d powerlevel9k ]] || git clone https://github.com/bhilburn/powerlevel9k.git
+    [[ -d powerlevel10k ]] || git clone https://github.com/romkatv/powerlevel10k.git
 
     rm ~/.zshrc
     rm ~/.zshrc.local

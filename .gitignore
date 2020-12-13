@@ -4,7 +4,7 @@
 *.png
 *.json
 vim
-powerlevel9k/
+powerlevel10k/
 polybar-themes/
 70-no-bitmaps-backup
 .netspeed/

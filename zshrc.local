@@ -92,7 +92,7 @@ export PATH=$PATH:$HOME/.local/bin
 export TERM="xterm-256color"
 
 export CONFIG="$HOME/config/"
-source "$CONFIG/powerlevel9k/powerlevel9k.zsh-theme"
+source "$CONFIG/powerlevel10k/powerlevel10k.zsh-theme"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv anaconda vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_intelligence time background_jobs)
 
