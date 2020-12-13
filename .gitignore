@@ -7,6 +7,7 @@ vim
 powerlevel10k/
 polybar-themes/
 70-no-bitmaps-backup
+update-tlmgr-latest.sh
 .netspeed/
 *.deb
 go.mod
