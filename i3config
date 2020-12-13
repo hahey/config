@@ -171,6 +171,8 @@ mode "application" {
         bindsym g exec google-chrome-stable
         bindsym c exec chromium
         bindsym p exec pavucontrol
+        bindsym w exec playonlinux
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
