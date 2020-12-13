@@ -121,14 +121,24 @@ function netspeed(){
     deactivate
 }
 
-function make_ml_playground(){
-    cd "$(mktemp -d)"
+alias gotemp='cd "$(mktemp -d)"'
+
+function ml_venv3(){
     mkvenv3
     pip install -r "$CONFIG"/ml_requirements.list
 }
 
+function dl_venv3(){
+    ml_venv3
+    pip install -r "$CONFIG"/dl_requirements.list
+}
+
+function make_ml_playground(){
+    gotemp
+    ml_venv3
+}
+
 alias mkplay='make_ml_playground'
-alias gotemp='cd "$(mktemp -d)"'
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
