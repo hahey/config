@@ -52,8 +52,9 @@ then
 fi
 
 netspeed_install(){
+    SPEED="/.netspeed"
     [[ -e $PWD$SPEED ]] || python3 -m venv $PWD$SPEED
-    source $PWD$SPEED/bin/activate
+    source $SPEED/bin/activate
     pip install -U pip speedtest-cli
 }
 
@@ -84,32 +85,42 @@ config_setup_from_repo(){
     POLYBAR_THEME="/polybar-themes/polybar-6"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
-    CONKY="/conkyrc"
-    SPEED="/.netspeed"
+    CONKY="/conky.conf"
 
     mkdir -p ~/.config/conky
-    [[ -e ~/.config/conky/conky.conf ]] || ln -s $PWD$CONKY ~/.config/conky/conky.conf
+    if [[ -h $HOME/.config/conky/conky.conf ]]
+    then
+        rm -r $HOME/.config/conky/conky.conf
+    fi
+    ln -s $PWD$CONKY $HOME/.config/conky/conky.conf
 
     mkdir -p ~/.config/i3
-    [[ -e ~/.config/i3/config ]]  || ln -s $PWD$I3WMCONF ~/.config/i3/config
+    if [[ -e $HOME/.config/i3/config ]]
+    then
+        rm -r $HOME/.config/i3/config
+    fi
+    ln -s $PWD$I3WMCONF $HOME/.config/i3/config
 
-    [[ -d polybar-themes ]] || git clone ://github.com/hahey/polybar-themes.git
+    [[ -d polybar-themes ]] || git clone https://github.com/hahey/polybar-themes.git
     mkdir -p ~/.local/share/fonts
     cd $PWD$POLYBAR_THEME
     cp -r fonts/* ~/.local/share/fonts
     fc-cache -v
-    sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ../../70-no-bitmaps-backup
-    if [[ -d ~/.config/polybar ]]
+    if [[ -e /etc/fonts/conf.d/70-no-bitmaps.conf ]]
+    then
+        sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ../../70-no-bitmaps-backup
+    fi
+    if [[ -h ~/.config/polybar ]]
     then
         rm -r ~/.config/polybar
     fi
-    ln -s $PWD$POLYBAR_THEME ~/.config/polybar
+    ln -s $PWD ~/.config/polybar
     ./scripts/type-switch.sh
     ./scripts/color-switch.sh
     cd ../..
 
     mkdir -p ~/.config/nvim
-    if [[ -e ~/.config/nvim/init.vim ]]
+    if [[ -h ~/.config/nvim/init.vim ]]
     then
         rm -r ~/.config/nvim/init.vim
     fi
@@ -122,7 +133,10 @@ config_setup_from_repo(){
     [[ -e ~/.vim/bundle/Vundle.vim ]] || ln -s $PWD$VUNDLE ~/.vim/bundle/Vundle.vim
     cd ..
 
-    rm ~/.vimrc
+    if [[ -h ~/.vimrc ]]
+    then
+        rm ~/.vimrc
+    fi
     ln -s $PWD$VIMRC ~/.vimrc
 
     if ask_continue "Vim Plugin install?"
@@ -132,13 +146,19 @@ config_setup_from_repo(){
 
     [[ -d powerlevel10k ]] || git clone https://github.com/romkatv/powerlevel10k.git
 
-    rm ~/.zshrc
-    rm ~/.zshrc.local
-    ln -s $PWD$ZSHRC ~/.zshrc
-    ln -s $PWD$ZSHLOC ~/.zshrc.local
+    if [[ -h $HOME/.zshrc ]]
+    then
+        rm $HOME/.zshrc
+    fi
+    if [[ -h $HOME/.zshrc.local ]]
+    then
+        rm $HOME/.zshrc.local
+    fi
+    ln -s $PWD$ZSHRC $HOME/.zshrc
+    ln -s $PWD$ZSHLOC $HOME/.zshrc.local
 
     mkdir -p ~/.local/share/konsole
-    rm ~/.local/share/konsole/profile
+    [[ -e $HOME/.local/share/konsole/profile ]] && rm $HOME/.local/share/konsole/profile
     ln -s $PWD$PROFILE ~/.local/share/konsole/profile
 
     if ask_continue "netspeed (speedtest-cli) install"

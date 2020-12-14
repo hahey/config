@@ -31,11 +31,8 @@ function activate_conda(){
     export PATH="/home/heuna/miniconda3/bin:$PATH"
 }
 
-function check_build_py(){
-    if ! [[ -f "$PWD/build.py" ]] ; then
-        echo "No 'build.py' found in current directory"
-        return 1
-    fi
+function activate_venv(){
+    source $1/bin/activate
 }
 
 function mkvenv2(){
@@ -51,12 +48,8 @@ function mkvenv2(){
     fi
     echo "Will setup virtualenv in $venv_name"
     virtualenv $venv_name
-    source $venv_name/bin/activate
-    pip install -U pip
-    if check_build_py ; then
-        pip install -U --pre pybuilder
-        pyb install_dependencies
-    fi
+    activate_venv $venv_name
+    pip install -U pip setuptools
 }
 
 function mkvenv3(){
@@ -72,17 +65,12 @@ function mkvenv3(){
     fi
     echo "Will setup virtualenv in $venv_name"
     python3 -m venv $venv_name
-    source $venv_name/bin/activate
-    pip install -U pip
-    if check_build_py ; then
-        pip install -U --pre pip pybuilder
-        pyb install_dependencies
-    fi
+    activate_venv $venv_name
+    pip install -U pip setuptools
 }
 
-alias venv2="source .venv2/bin/activate"
-alias venv3="source .venv3/bin/activate"
-alias cenv3="source activate cenv3"
+alias venv2="activate_venv .venv2"
+alias venv3="activate_venv .venv3"
 
 #### adding path
 export PATH=$PATH:$HOME/.local/bin
@@ -116,7 +104,7 @@ function disable_keyboard(){
 }
 
 function netspeed(){
-    source $CONFIG/.netspeed/bin/activate
+    activate_venv $CONFIG/.netspeed
     speedtest-cli
     deactivate
 }
@@ -125,11 +113,13 @@ alias gotemp='cd "$(mktemp -d)"'
 
 function ml_venv3(){
     mkvenv3
+    venv3
     pip install -r "$CONFIG"/ml_requirements.list
 }
 
 function dl_venv3(){
     ml_venv3
+    venv3
     pip install -r "$CONFIG"/dl_requirements.list
 }
 
