@@ -23,7 +23,13 @@ gicc () {
     LBUFFER="git checkout"
 }
 zle -N gicc gicc
-bindkey "git co" gicc
+bindkey "git ch" gicc
+
+ssha () {
+    LBUFFER="ssh-add ~/.ssh/id_"
+}
+zle -N ssha ssha
+bindkey "ssh-a" ssha
 
 #### Python stuff
 
