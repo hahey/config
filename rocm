@@ -1,0 +1,23 @@
+    sudo apt install libnuma-dev
+wget -q -O - https://repo.radeon.com/rocm/rocm.gpg.key | sudo apt-key add -
+echo 'deb [arch=amd64] https://repo.radeon.com/rocm/apt/debian/ xenial main' | sudo tee /etc/apt/sources.list.d/rocm.list
+sudo apt update
+sudo apt install rocm-dkms
+sudo usermod -a -G video $LOGNAME
+sudo usermod -a -G render $LOGNAME
+/opt/rocm/bin/rocminfo
+/opt/rocm/opencl/bin/clinfo
+
+sudo apt update
+sudo apt install rocm-libs miopen-hip cxlactivitylogger rccl
+sudo apt-get install rocm-dev
+
+cd ~/config
+git clone https://github.com/pytorch/pytorch.git
+cd pytorch
+git submodule init
+git submodule update
+docker pull rocm/pytorch:rocm3.10_ubuntu16.04_py3.6_pytorch
+sudo docker run -it -v $HOME:/data --privileged --rm --device=/dev/kfd --device=/dev/dri --group-add video rocm/pytorch:rocm3.10_ubuntu16.04_py3.6_pytorch
+PYTORCH_TEST_WITH_ROCM=1 python3.6 test/run_test.py –-verbose
+pip install torchvision
