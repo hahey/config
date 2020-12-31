@@ -106,6 +106,17 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace 1 output eDP
+workspace 2 output DisplayPort-2
+workspace 3 output eDP
+workspace 4 output DisplayPort-2
+workspace 5 output eDP
+workspace 6 output DisplayPort-2
+workspace 7 output eDP
+workspace 8 output DisplayPort-2
+workspace 9 output eDP
+workspace 10 output DisplayPort-2
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -195,3 +206,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec setxkbmap -layout de,us -option grp:alt_space_toggle
 
 exec_always --no-startup-id conky -d
+exec --no-startup-id xrandr --output eDP --auto --right-of DisplayPort-2
