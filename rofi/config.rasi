@@ -1,0 +1,6 @@
+configuration {
+    font = "Terminus (TTF) 13";
+    fullscreen = false;
+    theme = "~/.config/rofi/black-minimal.rasi";
+    disable-history = false;
+}

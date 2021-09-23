@@ -1,10 +1,14 @@
 # shell related
 zsh
-yakuake
+# yakuake
 htop
 tree
 fonts-font-awesome
 fonts-powerline
+fonts-iosevka
+fonts-terminus
+fonts-fantasque-sans
+fonts-comfortaa
 
 # wm related
 i3
@@ -31,9 +35,9 @@ fonts-noto
 fonts-noto-cjk
 
 # autokey related
-autokey-gtk
-xdotool
-xinput
+# autokey-gtk
+# xdotool
+# xinput
 
 # browsers
 firefox-esr

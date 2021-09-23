@@ -82,10 +82,11 @@ config_setup_from_repo(){
     NVIMCONF="/init.vim"
     PROFILE="/profile"
     I3WMCONF="/i3config"
-    POLYBAR_THEME="/polybar-themes/polybar-6"
+    POLYBAR="/polybar"
     ZSHRC="/zshrc"
     ZSHLOC="/zshrc.local"
     CONKY="/conky.conf"
+    ROFI="/.config/rofi"
 
     mkdir -p ~/.config/conky
     if [[ -h $HOME/.config/conky/conky.conf ]]
@@ -101,23 +102,14 @@ config_setup_from_repo(){
     fi
     ln -s $PWD$I3WMCONF $HOME/.config/i3/config
 
-    [[ -d polybar-themes ]] || git clone https://github.com/hahey/polybar-themes.git
-    mkdir -p ~/.local/share/fonts
-    cd $PWD$POLYBAR_THEME
-    cp -r fonts/* ~/.local/share/fonts
-    fc-cache -v
-    if [[ -e /etc/fonts/conf.d/70-no-bitmaps.conf ]]
+    if [[ -e $HOME$ROFI ]]
     then
-        sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ../../70-no-bitmaps-backup
+        rm -r $HOME$ROFI
     fi
-    if [[ -h ~/.config/polybar ]]
-    then
-        rm -r ~/.config/polybar
-    fi
-    ln -s $PWD ~/.config/polybar
-    ./scripts/type-switch.sh
-    ./scripts/color-switch.sh
-    cd ../..
+    mkdir -p $HOME$ROFI
+
+    ln -s $PWD$ROFI $HOME$ROFI
+    ln -s $PWD$POLYBAR ~/.config$POLYBAR
 
     mkdir -p ~/.config/nvim
     if [[ -h ~/.config/nvim/init.vim ]]
@@ -159,7 +151,7 @@ config_setup_from_repo(){
         rm $HOME/.zprezto
     fi
 
-    [[ -d powerlevel10k ]] || git clone --recursive https://github.com/sorin-ionescu/prezto.git
+    [[ -d prezto ]] || git clone --recursive https://github.com/sorin-ionescu/prezto.git
 
     ln -s $PWD/prezto "$HOME/.zprezto"
 
