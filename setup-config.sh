@@ -144,7 +144,7 @@ config_setup_from_repo(){
         vim +PluginInstall +qall
     fi
 
-    [[ -d powerlevel10k ]] || git clone https://github.com/romkatv/powerlevel10k.git
+    # [[ -d powerlevel10k ]] || git clone https://github.com/romkatv/powerlevel10k.git
 
     if [[ -h $HOME/.zshrc ]]
     then
@@ -154,8 +154,19 @@ config_setup_from_repo(){
     then
         rm $HOME/.zshrc.local
     fi
+    if [[ -h $HOME/.zprezto ]]
+    then
+        rm $HOME/.zprezto
+    fi
+
+    [[ -d powerlevel10k ]] || git clone --recursive https://github.com/sorin-ionescu/prezto.git
+
+    ln -s $PWD/prezto "$HOME/.zprezto"
+
     ln -s $PWD$ZSHRC $HOME/.zshrc
     ln -s $PWD$ZSHLOC $HOME/.zshrc.local
+
+    chsh -s /bin/zsh
 
     mkdir -p ~/.local/share/konsole
     [[ -e $HOME/.local/share/konsole/profile ]] && rm $HOME/.local/share/konsole/profile
