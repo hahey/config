@@ -45,9 +45,9 @@ chromium
 
 # improve ui setting
 # conky-all
-compizconfig-settings-manager
-compiz
-compiz-plugins-extra
+#compizconfig-settings-manager
+#compiz
+#compiz-plugins-extra
 
 # neovim
 build-essential
