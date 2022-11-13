@@ -59,11 +59,14 @@ netspeed_install(){
 }
 
 youcompleteme_install(){
-        CONF=$PWD
-        cd ~/.vim/bundle/YouCompleteMe
-        source $CONF$SPEED/bin/activate
-        python3 install.py --clangd-completer
-        cd $CONF
+    SPEED="/.netspeed"
+    [[ -e $PWD$SPEED ]] || python3 -m venv $PWD$SPEED
+
+    CONF=$PWD
+    cd ~/.vim/bundle/YouCompleteMe
+    source $CONF$SPEED/bin/activate
+    python3 install.py --clangd-completer
+    cd $CONF
 }
 
 texlive_packages_install(){
@@ -102,13 +105,18 @@ config_setup_from_repo(){
     fi
     ln -s $PWD$I3WMCONF $HOME/.config/i3/config
 
-    if [[ -e $HOME$ROFI ]]
+    if [[ -h ~/.config/polybar ]]
     then
-        rm -r $HOME$ROFI
+        rm -r ~/.config/polybar
     fi
-    mkdir -p $HOME$ROFI
 
+    mkdir -p $HOME$ROFI
     ln -s $PWD$ROFI $HOME$ROFI
+
+    if [[ -e ~/.config$POLYBAR ]]
+    then
+        rm -r ~/.config$POLYBAR
+    fi
     ln -s $PWD$POLYBAR ~/.config$POLYBAR
 
     mkdir -p ~/.config/nvim
