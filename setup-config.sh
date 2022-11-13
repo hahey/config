@@ -105,11 +105,11 @@ config_setup_from_repo(){
     fi
     ln -s $PWD$I3WMCONF $HOME/.config/i3/config
 
-    if [[ -e $HOME$ROFI ]]
+    if [[ -h $HOME$ROFI ]]
     then
         rm -r $HOME$ROFI
     fi
-    ln -s $PWD$ROFI $HOME$ROFI
+    ln -s $PWD/rofi $HOME$ROFI
 
     if [[ -e ~/.config$POLYBAR ]]
     then
