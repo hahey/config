@@ -45,9 +45,9 @@ chromium
 
 # improve ui setting
 # conky-all
-#compizconfig-settings-manager
-#compiz
-#compiz-plugins-extra
+# compizconfig-settings-manager
+# compiz
+# compiz-plugins-extra
 
 # neovim
 build-essential
@@ -72,4 +72,4 @@ musescore3
 musescore-general-soundfont
 
 # ./boostnote.deb
-# ./chrome.deb
+./chrome.deb
