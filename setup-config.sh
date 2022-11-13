@@ -59,11 +59,14 @@ netspeed_install(){
 }
 
 youcompleteme_install(){
-        CONF=$PWD
-        cd ~/.vim/bundle/YouCompleteMe
-        source $CONF$SPEED/bin/activate
-        python3 install.py --clangd-completer
-        cd $CONF
+    SPEED="/.netspeed"
+    [[ -e $PWD$SPEED ]] || python3 -m venv $PWD$SPEED
+
+    CONF=$PWD
+    cd ~/.vim/bundle/YouCompleteMe
+    source $CONF$SPEED/bin/activate
+    python3 install.py --clangd-completer
+    cd $CONF
 }
 
 texlive_packages_install(){
@@ -101,23 +104,19 @@ config_setup_from_repo(){
     fi
     ln -s $PWD$I3WMCONF $HOME/.config/i3/config
 
-    [[ -d polybar-themes ]] || git clone https://github.com/hahey/polybar-themes.git
-    mkdir -p ~/.local/share/fonts
-    cd $PWD$POLYBAR_THEME
-    cp -r fonts/* ~/.local/share/fonts
-    fc-cache -v
-    if [[ -e /etc/fonts/conf.d/70-no-bitmaps.conf ]]
-    then
-        sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ../../70-no-bitmaps-backup
-    fi
     if [[ -h ~/.config/polybar ]]
     then
         rm -r ~/.config/polybar
     fi
-    ln -s $PWD ~/.config/polybar
-    ./scripts/type-switch.sh
-    ./scripts/color-switch.sh
-    cd ../..
+
+    mkdir -p $HOME$ROFI
+    ln -s $PWD$ROFI $HOME$ROFI
+
+    if [[ -e ~/.config$POLYBAR ]]
+    then
+        rm -r ~/.config$POLYBAR
+    fi
+    ln -s $PWD$POLYBAR ~/.config$POLYBAR
 
     mkdir -p ~/.config/nvim
     if [[ -h ~/.config/nvim/init.vim ]]

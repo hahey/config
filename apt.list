@@ -5,6 +5,10 @@ htop
 tree
 fonts-font-awesome
 fonts-powerline
+# fonts-iosevka
+fonts-terminus
+fonts-fantasque-sans
+fonts-comfortaa
 
 # wm related
 i3
@@ -67,5 +71,5 @@ gimp
 musescore3
 musescore-general-soundfont
 
-./boostnote.deb
-./chrome.deb
+# ./boostnote.deb
+# ./chrome.deb
